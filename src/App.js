@@ -4,7 +4,7 @@ import "./styles/app.css";
 import CurrencyCard from "./components/CurrencyCard";
 import Header from "./components/Header";
 import AddMoreCurrencies from "./components/AddMoreCurrencies";
-import description from "./DATA/description";
+import description from "./data/description";
 
 const fetcher = async () => {
   const { data } = await axios.get("https://api.exchangeratesapi.io/latest");
@@ -29,7 +29,7 @@ function App() {
     fetcher().then((value) => {
       setRates(value);
     });
-  });
+  }, []);
 
   const submit = (value) => {
     setSelectedCurrency([...selectedCurrency, value]);
