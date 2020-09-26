@@ -5,7 +5,6 @@ import CurrencyCard from "./CurrencyCard";
 import Header from "./Header";
 import AddMoreCurrencies from "./AddMoreCurrencies";
 import description from "../DATA/description";
-import Debug from "./Debug";
 import "../styles/app.css";
 
 const fetcher = async () => {
@@ -40,7 +39,7 @@ function App() {
 
   return (
     <div className="flex justify-center">
-      <div class="w-2/3 my-10">
+      <div class="w-5/6 md:w-2/3 xl:w-2/5 lg:w-1/2 sm:1 xs:w-4/5 my-10">
         <Header value={text} changeVal={(e) => setText(+e.target.value)} />
         {rates
           .filter(({ label }) => selectedCurrency.includes(label))

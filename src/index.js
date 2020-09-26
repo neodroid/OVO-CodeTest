@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import App from "./components/App";
 import { render } from "react-dom";
 
