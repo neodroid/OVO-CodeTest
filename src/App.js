@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
+import "./styles/app.css";
 import CurrencyCard from "./components/CurrencyCard";
 import Header from "./components/Header";
 import AddMoreCurrencies from "./components/AddMoreCurrencies";
 import description from "./DATA/description";
-import "./styles/app.css";
 
 const fetcher = async () => {
   const { data } = await axios.get("https://api.exchangeratesapi.io/latest");
