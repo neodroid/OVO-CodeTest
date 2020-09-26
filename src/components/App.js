@@ -33,8 +33,8 @@ function App() {
     });
   });
 
-  const submit = () => {
-    setSelectedCurrency([...selectedCurrency, addCurrency]);
+  const submit = (value) => {
+    setSelectedCurrency([...selectedCurrency, value]);
     setAddCurrency("");
   };
 
@@ -62,10 +62,11 @@ function App() {
             );
           })}
         <AddMoreCurrencies
-          list={rates}
+          list={rates.filter(({ label }) => !selectedCurrency.includes(label))}
           addCurrency={addCurrency}
           changeVal={(e) => setAddCurrency(e.target.value.toUpperCase())}
-          submit={submit}
+          submit={(val) => submit(val)}
+          onSelectedChange={(val) => submit(val)}
         />
       </div>
     </div>

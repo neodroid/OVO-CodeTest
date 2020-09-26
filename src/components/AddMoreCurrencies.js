@@ -1,28 +1,15 @@
 import React, { useState } from "react";
 import Dropdown from "./Dropdown";
 
-const AddMoreCurrencies = ({ addCurrency, changeVal, submit, list }) => {
-  const options = [
-    {
-      label: "Afrikaans",
-      value: "af",
-    },
-    {
-      label: "Arabic",
-      value: "ar",
-    },
-    {
-      label: "Hindi",
-      value: "hi",
-    },
-    {
-      label: "Dutch",
-      value: "nl",
-    },
-  ];
-
+const AddMoreCurrencies = ({
+  onSelectedChange,
+  addCurrency,
+  changeVal,
+  submit,
+  list,
+}) => {
   const [addNew, setAddNew] = useState(false);
-  const [language, setLanguage] = useState(options[0]);
+  const [language, setLanguage] = useState("Choose Currency");
 
   const clickAdd = () => {
     setAddNew(true);
@@ -30,7 +17,8 @@ const AddMoreCurrencies = ({ addCurrency, changeVal, submit, list }) => {
   const clickSubmit = (event) => {
     event.preventDefault();
     setAddNew(false);
-    submit();
+    submit(language);
+    setLanguage("Choose Currency");
   };
 
   if (!addNew) {
@@ -59,14 +47,9 @@ const AddMoreCurrencies = ({ addCurrency, changeVal, submit, list }) => {
           onSubmit={clickSubmit}
         >
           <div class="flex justify-center">
-            {/* <input
-              class="shadow appearance-none border rounded w py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mx-2"
-              value={addCurrency}
-              onChange={changeVal}
-            /> */}
             <Dropdown
               selected={language}
-              onSelectedChange={(val) => console.log(val)}
+              onSelectedChange={(val) => setLanguage(val)}
               options={list}
             />
 
